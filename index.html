@@ -7,44 +7,48 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
     <header>
         <div class="navbar">
             <div class="logo">
                 <img src="media/storeway_logo_svg.svg" alt="logo">
                 <h1>Storeway</h1>
             </div>
-
             <div class="nav-items">
-                <nav>
-                    <ul class="nav-links">
-                        <li><a href="#">About us</a></li>
-                        <li><a href="#">Contact us</a></li>
-                        <li><a href="#">Help</a></li>
-                    </ul>
-                </nav>
-                <div class="buttons">
-                    <button class="btn-outline">
-                        <a href="#">Get Started</a>
-                    </button>
-                    <button class="btn">
-                        <a href="#">Login</a>
-                    </button>
+                <input type="checkbox" id="menu-toggle" class="menu-toggle">
+                <label for="menu-toggle" class="hamburger-menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </label>
+                <div class="nav-content">
+                    <nav>
+                        <ul class="nav-links">
+                            <li><a href="#">About us</a></li>
+                            <li><a href="#">Contact us</a></li>
+                            <li><a href="#">Help</a></li>
+                        </ul>
+                    </nav>
+                    <div class="buttons">
+                        <button class="btn-outline">
+                            <a href="#">Get Started</a>
+                        </button>
+                        <button class="btn">
+                            <a href="#">Login</a>
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
     </header>
-
+    
     <!-- title -->
     <section class="content">
         <div class="text-section">
-            <h1 class="blue-text"> Are you a D2C brand?</h1>
-            <p class="black-text" style="margin-top: 20px;">Striving to make it easy for people </p>
-            <p class="black-text">to explore your products and offers?</p>
+            <h1 class="blue-text">Are you a D2C brand?</h1>
+            <p class="black-text">Striving to make it easy for people to explore your products and offers?</p>
         </div>
-
         <div class="image-section">
-            <img src="media/office.jpg " alt="Meeting Illustration">
+            <img src="media/office.jpg" alt="Meeting Illustration">
         </div>
     </section>
     
@@ -55,27 +59,25 @@
         </div>
         <p class="quote">"A mobile app can make it even easier!"</p>
     </section>
-
+    
     <!-- horizontal line -->
-    <hr style="width: 88%; size: 1;margin: auto;margin-top: 60px;">
-
+    <hr class="divider">
+    
     <!-- chat -->
     <section class="chat-container">
+        <div class="chat right">
+            <img src="media/office.jpg" alt="Meeting Illustration" class="icon">
+            <div class="bubble">similar to amazon app?</div>
+        </div>
         <div class="chat left">
             <img src="media/storeway_logo_svg.svg" alt="Chat Icon" class="icon">
             <div class="bubble">yes! but for D2C sites</div>
         </div>
-
-        <div class="chat right">
-            <div class="bubble">similar to amazon app?</div>
-            <img src="media/office.jpg" alt="Meeting Illustration" class="icon">
-        </div>
     </section>
-
+    
     <!-- horizontal line -->
-    <hr style="width: 88%; size: 1;margin: auto;margin-top: 60px;">
-
-
+    <hr class="divider">
+    
     <!-- points with checkmark -->
     <div class="container">
         <div class="checklist">
@@ -89,60 +91,76 @@
             </div>
             <div class="check-item">
                 <img src="media/checkmark.svg" alt="Check" class="checkmark">
-                <span>User are directed to your site on clicking product/offer on app itself</span>
+                <span> User are directed to your site on clicking product/offer on app itself</span>
             </div>
             <div class="check-item">
                 <img src="media/checkmark.svg" alt="Check" class="checkmark">
                 <span> Increase reach with 0.00% commission</span>
             </div>
-            <div class="check-item" style="margin-top: 130px;">
-                <span>🤔 Maybe we can think about 'Big D2C days' sale</span>
+            <div class="check-item thinking-item">
+                <span>🤔 Maybe we can think about <span>Big D2C Days</span> sale</span>
             </div>
         </div>
-
-        <video autoplay loop muted>
-            <source src="media/storewayapp.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-    </div>
-
-    <div class="app-box">
-        <div class="app-screens">
-            <img src="TODO" alt="App Screen 1">
-            <img src="TODO" alt="App Screen 2">
-            <img src="TODO" alt="App Screen 3">
-            <img src="TODO" alt="App Screen 4">
+        <div class="video-container">
+            <video autoplay loop muted playsinline>
+                <source src="media/storewayapp.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
         </div>
     </div>
 
+    
+    <div class="app-box">
+        <span>
+            On clicking product/offer user gets directed to your website
+        </span>
+
+        <div class="app-screens">
+            <img src="media/app_screen1.jpg" alt="App Screen 1">
+            <img src="media/app_screen2.jpg" alt="App Screen 2">
+            <img src="media/app_screen3.jpg" alt="App Screen 3">
+            <img src="media/app_screen4.jpg" alt="App Screen 4">
+        </div>
+    </div>
+
+    <div class="button-container-s">
+        <a href="#" class="btn-s btn-s-download">
+            <img src="media/playstore.png" alt="Play Store" class="icon-s">
+            Download app
+        </a>
+
+        <a href="#" class="btn-s btn-s-start">Get Started</a>
+    </div>
+    
     <section class="steps">
         <h2>How to join?</h2>
         <div class="steps-container">
             <div class="step">
-                <div class="box red">Click <button class="btn-outline">Get started</button></div>
+                <div class="box red">Click
+                    <button class="btn-outline">Get started</button>
+                </div>
                 <p>Step 1</p>
             </div>
             <div class="step">
-                <div class="box green">xxxxxxxxxx xxxxxxx</div>
+                <div class="box green"> Create your StoreProfile</div>
                 <p>Step 2</p>
             </div>
             <div class="step">
-                <div class="box blue">xxxxxxxxxx xxxxxxx</div>
+                <div class="box blue">Add Products and Offers</div>
                 <p>Step 3</p>
             </div>
         </div>
     </section>
-
+    
     <footer class="footer">
-        <p>Contact: abc@email.com | 9999999999</p>
+        <p>Contact: <a href="mailto:chaitanya7447@gmail.com">email</a>  | <a href="tel:917447844899">917447844899</a></p>
         <nav>
             <ul class="footer-links">
                 <li><a href="#">About us</a></li>
-                <li>Follow us: <span class="todo">todo</span> <span class="todo">todo</span> <span class="todo">todo</span></li>
+                <li>|</li>
                 <li><a href="#">Give suggestions or feedback</a></li>
             </ul>
         </nav>
     </footer>
-
 </body>
 </html>

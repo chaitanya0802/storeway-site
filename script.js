@@ -1,3 +1,3 @@
-document.addEventListener("DOMContentLoaded", () => {
-    console.log("Page Loaded Successfully!");
-});
+function toggleMenu() {
+    document.querySelector('.nav-items').classList.toggle('active');
+}
