@@ -10,6 +10,15 @@ body {
     overflow-x: hidden;
 }
 
+#info {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            background-color: #f9f9f9;
+            width: 300px;
+        }
+
 /* Header and Navigation */
 header {
     background-color: #F6F3FD;
@@ -21,7 +30,7 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    max-width: 1200px;
+    max-width: 98%;
     margin: 0 auto;
     padding: 0 20px;
     flex-wrap: wrap;
@@ -136,6 +145,50 @@ header {
 
 .menu-toggle {
     display: none;
+}
+
+/* Chat Popup Styling */
+
+
+.chat-popup {
+    position: fixed;
+    top: 56px;
+    right: 20px;
+    width: 400px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    display: none;
+    flex-direction: column;
+    overflow: hidden;
+    z-index: 1000;
+}
+
+/* Chat Header */
+.chat-header {
+    background: #614BF3;
+    color: white;
+    padding: 10px;
+    font-size: 17px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Close Button */
+.close-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 22px;
+    cursor: pointer;
+}
+
+/* Chat Body */
+.chat-body {
+    padding: 15px;
+    font-size: 16px;
+    color: #333;
 }
 
 /* Main Content Section */
@@ -449,17 +502,17 @@ video {
 
 .red {
     font-size: 140%;
-    background-color: #FDE7E7;
+    background-color: #f4dcdc;
 }
 
 .green {
     font-size: 140%;
-    background-color: #D9F7D9;
+    background-color: #d0ecd0;
 }
 
 .blue {
     font-size: 140%;
-    background-color: #D9F0FF;
+    background-color: #bbefea;
 }
 
 .step p {
@@ -473,7 +526,7 @@ video {
     background-color: #F6F3FD;
     text-align: center;
     padding: 30px 20px;
-    margin-top: 50px;
+    margin-top: 100px;
 }
 
 .footer p {
@@ -524,13 +577,28 @@ video {
 }
 
 @media (max-width: 768px) {
+
+    .chat-popup {
+    position: fixed;
+    top: 56px;
+    right: 20px;
+    width: 400px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    display: none;
+    flex-direction: column;
+    overflow: hidden;
+    z-index: 1000;
+}
+
     .hamburger-menu {
         display: flex;
     }
 
     .nav-content {
         position: absolute;
-        top: 60px;
+        top: 40px;
         left: 0;
         width: 100%;
         background-color: #F6F3FD;
@@ -641,4 +709,18 @@ video {
         font-size: 14px;
         padding: 12px 15px;
     }
+
+    .chat-popup {
+    position: fixed;
+    top: 56px;
+    right: 20px;
+    width: 300px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    display: none;
+    flex-direction: column;
+    overflow: hidden;
+    z-index: 1000;
+}
 }
