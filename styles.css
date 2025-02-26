@@ -508,7 +508,14 @@ video {
     justify-content: center;
     align-items: center;
     margin-bottom: 20px;
+    transition: transform 0.1s;
 }
+
+.step:hover{
+    transform: translateY(-6px);
+}
+
+
 
 .box {
     padding: 20px;
