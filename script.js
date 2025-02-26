@@ -13,6 +13,15 @@ function closePopup(sectionId) {
     document.getElementById(sectionId).style.display = 'none';
 }
 
+document.addEventListener("DOMContentLoaded", function () {
+    const video = document.getElementById("video");
+    const loader = document.querySelector(".loader");
+
+    // Hide loader when video starts playing
+    video.addEventListener("canplay", function () {
+        loader.style.display = "none";
+    });
+});
 
 
 
