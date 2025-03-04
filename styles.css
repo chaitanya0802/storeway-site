@@ -45,7 +45,7 @@ header {
 .logo h1 {
     font-size: 24px;
     font-family: Segoe UI Semibold, Arial, serif;
-    color: #614BF3;
+    color: #686bf7;
 }
 
 .logo img {
@@ -79,7 +79,7 @@ header {
 }
 
 .nav-links li a:hover {
-    color: #614BF3;
+    color: #686bf7;
 }
 
 .buttons {
@@ -90,7 +90,7 @@ header {
 
 .btn {
     padding: 2px 15px;
-    background-color: #614BF3;
+    background-color: #686bf7;
     color: white;
     border: none;
     border-radius: 15px;
@@ -105,7 +105,7 @@ header {
 .btn-outline {
     font-size: 16px;
     padding: 2px 12px;
-    border: 2px solid #614BF3;
+    border: 2px solid #686bf7;
     background: transparent;
     border-radius: 16px;
     cursor: pointer;
@@ -117,7 +117,7 @@ header {
 }
 
 .btn-outline a {
-    color: #614BF3;
+    color: #686bf7;
     text-decoration: none;
 }
 
@@ -139,7 +139,7 @@ header {
 .hamburger-menu span {
     height: 3px;
     width: 100%;
-    background-color: #614BF3;
+    background-color: #686bf7;
     border-radius: 3px;
 }
 
@@ -166,7 +166,7 @@ header {
 
 /* Chat Header */
 .chat-header {
-    background: #614BF3;
+    background: #686bf7;
     color: white;
     padding: 10px;
     font-size: 17px;
@@ -462,7 +462,7 @@ video {
 
         /* Get Started button */
         .btn-s-start {
-            background: #7D3CFA;
+            background: #686bf7;
             color: white;
         }
 
@@ -580,13 +580,13 @@ video {
 }
 
 .footer-links li a:hover {
-    color: #614BF3;
+    color: #686bf7;
 }
 
 .social-media a {
     font-size: 18px;
     margin: 0 5px;
-    color: #614BF3;
+    color: #686bf7;
 }
 
 /* Responsive Design */
