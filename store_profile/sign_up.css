@@ -1,0 +1,42 @@
+.signup_outer{
+    /* height: 400px; */
+    background-color: rgb(197, 197, 197);
+    background-color: #F6F3FD;
+    overflow:hidden;
+
+}
+.form_outer{
+    /* background-color: rgb(252, 255, 255); */
+    font-size: 16px;
+    width:70%;
+
+}
+
+.btn-outline {
+    font-size: 16px;
+    padding: 5px 12px;
+    border: 2px solid #686bf7;
+    background-color:  #686bf7;
+    color:white;
+    border-radius: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.btn-outline:hover{
+    color:black;
+    background-color: #ffffff;
+}
+.user_input{
+    width:100%;
+
+}
+.user_input{
+    border-radius: 5px;
+    border: 1px solid #ced4da;
+    padding: 10px;
+    font-size: 16px;
+}
+.user_input:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
