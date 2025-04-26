@@ -1,16 +1,38 @@
 .signup_outer{
-    /* height: 400px; */
-    background-color: rgb(197, 197, 197);
-    background-color: #F6F3FD;
+    width:70%;
+    margin: auto;
+    margin-top:50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* background-color: rgb(197, 197, 197); */
     overflow:hidden;
+
+}
+
+.form_container{
+    background-color: #F6F3FD;
+
 
 }
 .form_outer{
     /* background-color: rgb(252, 255, 255); */
     font-size: 16px;
-    width:70%;
+    width:80%;
 
 }
+
+@media (max-width:600px) {
+    .signup_outer{
+        width:90%;
+    }
+    .form_outer{
+       
+        width:80%;
+    
+    }
+}
+
 
 .btn-outline {
     font-size: 16px;
@@ -33,10 +55,46 @@
 .user_input{
     border-radius: 5px;
     border: 1px solid #ced4da;
-    padding: 10px;
+    padding: 8px;
     font-size: 16px;
 }
 .user_input:focus {
     border-color: #007bff;
     box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
+input{
+    background-color: #F6F3FD;
+
+}
+.alert_custom{
+    display:none;
+}
+
+/* alert msg */
+/* .alert_outer {
+    position: fixed;           
+    z-index: 1000;
+    width: 300px;
+    right: 10px;
+    bottom: 10px;
+    padding: 15px;
+    border-radius: 8px;
+    transform: translateY(-200px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+} */
+
+/* Add this class with JS when showing the alert */
+/* .alert_show {
+    opacity: 1;
+    transform: translateY(0);
+} */
+
+
+/* footer media query  */
+/* @media(min-width:1000px){
+    .footer{
+        position: fixed;
+        width: 100%;
+        bottom: 0px;
+    }
+} */

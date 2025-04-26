@@ -30,13 +30,14 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    max-width: 98%;
+    max-width: 100%;
     margin: 0 auto;
     padding: 0 20px;
     flex-wrap: wrap;
 }
 
 .logo {
+    margin-left:10px;
     display: flex;
     align-items: center;
     gap: 10px;
@@ -54,6 +55,7 @@ header {
 }
 
 .nav-items {
+    margin-right:10px;
     display: flex;
     align-items: center;
     margin-left: auto;
@@ -630,15 +632,15 @@ video {
 
     .nav-content {
         position: absolute;
-        top: 40px;
-        left: 0;
-        width: 100%;
+        top: 70px;
+        right:10px;
+        width: 50%;
         background-color: #F6F3FD;
         flex-direction: column;
         align-items: center;
         padding: 20px;
         box-shadow: 0 5px 10px rgba(0,0,0,0.1);
-        transform: translateY(-150%);
+        transform: translateY(-170%);
         transition: transform 0.3s ease-in-out;
         z-index: 100;
     }
