@@ -49,6 +49,9 @@ body{
 .float-left{
     float:right;
 }
+.alert{
+    display: none;
+}
 @media (max-width: 700px) {
     .form_container {
        width:90%;

@@ -1,8 +1,11 @@
 //get main categories
+base_address = "http://192.168.95.91:8000/"
+
 let main_category_msg = document.getElementById("main_category_mag");
 let main_id;//main category id -don't change it
 main_category_msg.innerHTML = "";
-fetch("http://192.168.167.91:8000/get-categories/main")
+
+fetch(`${base_address}get-categories/main`)
     .then((response) => response.json()) // parse JSON from response
     .then((data) => {
         console.log(data); // do something with the data
@@ -29,7 +32,7 @@ function sub_category_load() {
     sub_category_msg.innerHTML = "";
     const selectElement = document.getElementById("main_category");
     const cat_id = selectElement.value;
-    main_id=cat_id;
+    main_id = cat_id;
     // console.log(cat_id);
 
 
@@ -37,7 +40,7 @@ function sub_category_load() {
     document.getElementById("sub_category_container").innerHTML = "";
 
     // Fetch subcategories based on selected main category ID
-    fetch(`http://192.168.167.91:8000/get-categories/${cat_id}`) // Update URL as needed
+    fetch(`${base_address}get-categories/${cat_id}`) // Update URL as needed
         .then((response) => response.json())
         .then((data) => {
             const container = document.getElementById("sub_category_container");
@@ -63,6 +66,8 @@ function sub_category_load() {
                 const targetCol = index % 2 === 0 ? col1 : col2;
 
                 targetCol.appendChild(checkbox);
+                const space = document.createTextNode(' ');
+                targetCol.appendChild(space);
                 targetCol.appendChild(label);
                 targetCol.appendChild(br);
             });
@@ -80,6 +85,8 @@ function sub_category_load() {
 document.addEventListener("DOMContentLoaded", function () {
     // get main category
     const form = document.querySelector("form");
+    const sub_category_msg = document.getElementById("sub_category_mag");
+    sub_category_msg.innerHTML=""
 
     form.addEventListener("submit", function (event) {
         event.preventDefault(); // Prevent default form submission
@@ -104,19 +111,24 @@ document.addEventListener("DOMContentLoaded", function () {
         const logo = form.querySelector("input[type='file']").files[0]; // File object
         const phone = form.querySelector("input[type='number']").value;
 
-    //    get subcategories 
+        //    get subcategories 
 
-            const subCategories = [];
-            form.querySelectorAll("input[type='checkbox']:checked").forEach(checkbox => {
-                subCategories.push(parseInt(checkbox.id));
-            });  
-        
-    // get main category
-            subCategories.push(parseInt(main_id))
-             // console.log(subCategories)
+        const subCategories = [];
+        form.querySelectorAll("input[type='checkbox']:checked").forEach(checkbox => {
+            subCategories.push(parseInt(checkbox.id));
+        });
+
+        //verify
+        if(subCategories.length==0){
+            sub_category_msg.innerHTML = "Please select minimum one category";
+            return
+        }
+        // get main category
+        subCategories.push(parseInt(main_id))
+        // console.log(subCategories)
 
         // Append all fields to FormData (used for file upload)
-         formData = new FormData();
+        formData = new FormData();
         // Append all fields to formData
         formData.append("store_name", storeName);
         formData.append("store_description", storeDescription);
@@ -129,10 +141,10 @@ document.addEventListener("DOMContentLoaded", function () {
         subCategories.forEach(id => formData.append("category", id));//append category
 
         //send data to server
-        fetch("http://192.168.167.91:8000/create-store-profile", {
+        fetch(`${base_address}create-store-profile`, {
             method: "POST",
             headers: {
-                Authorization: "Token f2eff85957da99370a20645ad7c245472f823c79",
+                Authorization: "Token 5897c572c4819afd273a2e10f6905262022a2b8b",
                 // 'Content-Type': 'application/json'
             },
             body: formData,
