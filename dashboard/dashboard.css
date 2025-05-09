@@ -1,0 +1,127 @@
+.store_logo{
+    background-color: black;
+    width:200px;
+    height: 200px;
+}
+.box_info{
+    /* background-color: rgb(255, 255, 255); */
+    /* border:1px solid rgb(184, 184, 184); */
+    border-radius: 10px;
+    border: none; 
+    /* background-color: rgb(242, 230, 253) */
+
+}
+.nav_list{
+    list-style-type: none;
+}
+.nav_list a{
+    text-decoration: none;
+}
+.card_outer{
+    background-color: rgb(255,226,230);
+    width: 150px;
+    height:150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 8px;
+}
+.card_outer i{
+    font-size:40px;
+}
+.summary_title{
+    font-size:20px;
+    font-weight: 500;
+}
+.store_url{
+    color:black;
+    text-decoration: none;
+}
+.btn-outline{
+    background-color: #6C47FF;
+}
+.btn-outline a{
+    color: rgb(255, 255, 255);
+}
+.btn-outline:hover{
+    background-color: #f8f4ff;
+    color: black;
+}
+.btn-outline:hover a {
+    color: #6f42c1; 
+  }
+.tab-btn.active {
+    background-color: #6C47FF;
+    color: white;
+  }
+  .tab-btn {
+    border: 1px solid #6C47FF;
+    background: transparent;
+    color: #6C47FF;
+    padding: 6px 16px;
+    border-radius: 20px;
+    margin: 0 5px;
+  }
+  .table-container_div {
+    /* background-color: #f8f4ff; */
+    border: 1px solid #c2c2c2;
+    border-radius: 10px;
+    padding: 20px;
+    overflow-x: auto;
+  }
+  .table th, .table td {
+    vertical-align: middle;
+    white-space: nowrap;
+  }
+  .pagination-btn {
+    border: 1px solid #6C47FF;
+    background: linear-gradient(to right, #6C47FF 50%, transparent 50%);
+    background-size: 200% 100%;
+    background-position: right bottom;
+    color: #6C47FF;
+    border-radius: 20px;
+    padding: 5px 12px;
+    margin: 0 4px;
+    transition: background-position 0.4s ease, color 0.4s ease;
+  }
+  
+  .pagination-btn:hover {
+    background-position: left bottom;
+    color: white;
+  }
+  
+  /* Ensures responsiveness and horizontal scroll if needed */
+.table-container {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  /* Optional: Keep table full-width and compact */
+
+  
+  /* Optional: Style improvements */
+  table th,
+  table td {
+    text-align: center;
+    vertical-align: middle;
+  }
+
+.page_number{
+    padding: 5px 10px 5px 10px;
+    margin-left:5px ;
+    margin-right:5px ;
+    border: 1px solid rgb(199, 199, 199);
+    border-radius:2px;
+}
+
+/* tooltip color */
+  .custom-tooltip .tooltip-inner {
+    background-color:  #6c47ff;
+    color: #ffffff; /* white text */
+    border: 1px solid rgb(118, 118, 118);
+  }
+
+  .custom-tooltip .tooltip-arrow::before {
+    /* background-color:  #ffffff; */
+  }
