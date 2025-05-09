@@ -1,13 +1,33 @@
+//check user login or not 
+document.getElementById("user_name").innerHTML=localStorage.getItem("username");
+document.getElementById("logout").addEventListener("click", logout); // ✅ Pass the function reference
+//logout function 
+function logout() {
+  // Optionally clear all localStorage (if needed)
+  localStorage.clear();
+
+  // Redirect to login page
+ window.location.href = "../login_sign_up/login.html";
+}
+
+if (!localStorage.getItem("token") || !localStorage.getItem("username")) {
+ window.location.href = "../login_sign_up/login.html";
+}
+
 // load profile 
 const table_alert = document.getElementById("table_alert_msg")
 shop_data_load_msg = document.getElementById("shop_data_load_msg")
 shop_data_load_msg.style.display = "none"
-const token="f1dd9973254a10783e7e13b0ca369c9e87624d3b"
 function fetchStoreProfile() {
+    //check user login or not 
+    if (!localStorage.getItem("token") || !localStorage.getItem("username")) {
+     window.location.href = "../login_sign_up/login.html";
+    }
+
     fetch("https://www.api.storeway.xyz/get-store-profile", {
         method: "GET",
         headers: {
-            Authorization: `Token ${token}`
+            Authorization: `Token ${localStorage.getItem("token")}`
         }
     })
         .then(res => {
@@ -75,6 +95,10 @@ document.getElementById("offers-tab").addEventListener("click", () => {
 // Call function on page load
 document.addEventListener("DOMContentLoaded", fetchStoreProfile);
 // load table data
+//check user login or not 
+if (!localStorage.getItem("token") || !localStorage.getItem("username")) {
+ window.location.href = "../login_sign_up/login.html";
+}
 const tableBody = document.querySelector("#product-table tbody");
 const pageNumberDisplay = document.getElementById("page-number-products");
 const prevBtnProduct = document.getElementById("prev-btn-product");
@@ -86,11 +110,14 @@ let currentPage = 1;
 let totalPages = 1;
 
 function fetchProducts(page) {
-
+    //check user login or not 
+    if (!localStorage.getItem("token") || !localStorage.getItem("username")) {
+     window.location.href = "../login_sign_up/login.html";
+    }
     fetch(`https://www.api.storeway.xyz/get-products?page=${page}&page_size=${pageSize}`, {
         method: "GET",
         headers: {
-            "Authorization": `Token ${token}`,
+            "Authorization": `Token ${localStorage.getItem("token")}`,
             "Content-Type": "application/json"
         }
     })
@@ -138,6 +165,10 @@ function truncateText(text, maxLength = 20) {
 //   
 
 function populateTable(products) {
+    //check user login or not 
+    if (!localStorage.getItem("token") || !localStorage.getItem("username")) {
+     window.location.href = "../login_sign_up/login.html";
+    }
     tableBody.innerHTML = "";
     products.forEach(product => {
         const row = document.createElement("tr");
@@ -195,9 +226,9 @@ function populateTable(products) {
         <td><button class="btn btn-sm btn-outline-danger"  onclick="deleteProduct('${product.product_id}')">Delete</button></td>
         <td><button class="btn btn-sm btn-outline-secondary">View</button></td>
       `;
-      const productId = product.product_id;
-      const updateProductUrl = new URL("/update_product/update_product.html", window.location.origin);
-      updateProductUrl.searchParams.set("id", productId);
+        const productId = product.product_id;
+        const updateProductUrl = new URL("/update_product/update_product.html", window.location.origin);
+        updateProductUrl.searchParams.set("id", productId);
         tableBody.appendChild(row);
     });
 }
@@ -237,11 +268,14 @@ let currentOfferPage = 1;
 let totalOfferPages = 1;
 
 function fetchOffers(page) {
-
+    //check user login or not 
+    if (!localStorage.getItem("token") || !localStorage.getItem("username")) {
+     window.location.href = "../login_sign_up/login.html";
+    }
     fetch(`https://www.api.storeway.xyz/get-offers?page=${page}&page_size=${offerPageSize}`, {
         method: "GET",
         headers: {
-            "Authorization": `Token ${token}`,
+            "Authorization": `Token ${localStorage.getItem("token")}`,
             "Content-Type": "application/json"
         }
     })
@@ -274,6 +308,10 @@ function fetchOffers(page) {
 }
 
 function populateOfferTable(offers) {
+    //check user login or not 
+    if (!localStorage.getItem("token") || !localStorage.getItem("username")) {
+     window.location.href = "../login_sign_up/login.html";
+    }
     offerTableBody.innerHTML = "";
     offers.forEach(offer => {
         const row = document.createElement("tr");
@@ -345,7 +383,7 @@ function populateOfferTable(offers) {
                 <a href="${offer.offer_url}" target="_blank" class="btn btn-sm btn-outline-secondary">View</a>
             </td>
         `;
-      
+
         offerTableBody.appendChild(row);
     });
 
@@ -385,52 +423,60 @@ fetchOffers(currentOfferPage); // add this line if not already
 
 //delete product
 function deleteProduct(productId) {
+    //check user login or not 
+    if (!localStorage.getItem("token") || !localStorage.getItem("username")) {
+     window.location.href = "../login_sign_up/login.html";
+    }
     console.log(productId)
     fetch(`https://www.api.storeway.xyz/delete-product/${productId}`, {
         method: "DELETE",
         headers: {
-            "Authorization": `Token ${token}`
+            "Authorization": `Token ${localStorage.getItem("token")}`
         }
     })
-    .then(response => {
-        return response.json();
-    })
-    .then(result => {
-        alert("Product deleted successfully.");
-        console.log("Delete result:", result);
-        alert("Product Deleted Successfully");
-        location.reload();
-    })
-    .catch((error)=>{
-        console.log(error)
-        table_alert.style.display = "block";
-        table_alert.textContent = `Error deleting product: ${error.message}`;
-    })
+        .then(response => {
+            return response.json();
+        })
+        .then(result => {
+            alert("Product deleted successfully.");
+            console.log("Delete result:", result);
+            alert("Product Deleted Successfully");
+            location.reload();
+        })
+        .catch((error) => {
+            console.log(error)
+            table_alert.style.display = "block";
+            table_alert.textContent = `Error deleting product: ${error.message}`;
+        })
 }
 
 
 
 //delete product
 function deleteOffer(offerId) {
+    //check user login or not 
+    if (!localStorage.getItem("token") || !localStorage.getItem("username")) {
+     window.location.href = "../login_sign_up/login.html";
+    }
     console.log(offerId)
     fetch(`https://www.api.storeway.xyz/delete-offer/${offerId}`, {
         method: "DELETE",
         headers: {
-            "Authorization": `Token ${token}`
+            "Authorization": `Token ${localStorage.getItem("token")}`
         }
     })
-    .then(response => {
-        return response.json();
-    })
-    .then(result => {
-        alert("Offer deleted successfully.");
-        console.log("Delete result:", result);
-        alert("Offer  Deleted Successfully");
-        location.reload();
-    })
-    .catch((error)=>{
-        console.log(error)
-        table_alert.style.display = "block";
-        table_alert.textContent = `Error deleting product: ${error.message}`;
-    })
+        .then(response => {
+            return response.json();
+        })
+        .then(result => {
+            alert("Offer deleted successfully.");
+            console.log("Delete result:", result);
+            alert("Offer  Deleted Successfully");
+            location.reload();
+        })
+        .catch((error) => {
+            console.log(error)
+            table_alert.style.display = "block";
+            table_alert.textContent = `Error deleting product: ${error.message}`;
+        })
 }

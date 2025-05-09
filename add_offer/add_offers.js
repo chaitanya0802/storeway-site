@@ -1,6 +1,9 @@
 // Base URL for your server
-const base_address = "http://192.168.95.91:8000/";
+const base_address = "https://www.api.storeway.xyz/";
 
+if (!localStorage.getItem("token") || !localStorage.getItem("username")) {
+  window.location.href = "../login_sign_up/login.html";
+}
 // Elements
 const alert_msg = document.querySelector(".alert");
 alert_msg.style.display = "none";
@@ -22,6 +25,9 @@ document.addEventListener("DOMContentLoaded", () => {
 function loadMainCategories() {
   const mainCategorySelect = document.getElementById("main_category");
 
+  if (!localStorage.getItem("token") || !localStorage.getItem("username")) {
+    window.location.href = "../login_sign_up/login.html";
+  }
   // Load Main Categories on page load
   let main_category_msg = document.getElementById("main_category_mag");
   main_category_msg.innerHTML = "";
@@ -46,6 +52,11 @@ function loadMainCategories() {
 
 // Load Subcategories when Main Category Changes
 function sub_category_load() {
+
+  if (!localStorage.getItem("token") || !localStorage.getItem("username")) {
+    window.location.href = "../login_sign_up/login.html";
+  }
+
   const sub_category_msg = document.getElementById("sub_category_mag");
   sub_category_msg.innerHTML = "";
 
@@ -99,6 +110,11 @@ function sub_category_load() {
 
 // Handle Offer Form Submission
 document.addEventListener("DOMContentLoaded", function () {
+
+  if (!localStorage.getItem("token") || !localStorage.getItem("username")) {
+    window.location.href = "../login_sign_up/login.html";
+  }
+
   const form = document.querySelector("form");
   const saveOfferBtn = document.getElementById("saveOffer"); // Add ID to your Save Offer button
   const saveAndAddAnotherBtn = document.getElementById("saveAddAnother"); // Add ID to your Save and Add Another button
@@ -143,14 +159,14 @@ document.addEventListener("DOMContentLoaded", function () {
       .forEach((checkbox) => {
         subCategories.push(parseInt(checkbox.id));
       });
-      //subcategory check if zero return msg 
-      if (subCategories.length === 0) {
-        sub_category_msg.innerHTML = "Please select at least one sub-category.";
-        return;
-      }
+    //subcategory check if zero return msg 
+    if (subCategories.length === 0) {
+      sub_category_msg.innerHTML = "Please select at least one sub-category.";
+      return;
+    }
     //get main id
     subCategories.push(parseInt(main_id));
-    
+
 
     const formData = new FormData();
     if (offerId) formData.append("offer_id", offerId);
@@ -173,7 +189,7 @@ document.addEventListener("DOMContentLoaded", function () {
     fetch(`${base_address}add-offer`, {
       method: "POST",
       headers: {
-        Authorization: "Token 5897c572c4819afd273a2e10f6905262022a2b8b",
+        Authorization: `Token ${localStorage.getItem("token")}`,
       },
       body: formData,
     })
@@ -186,7 +202,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (stayOnPage) {
           form.reset();
         } else {
-          window.location.href = "../dashboard.html"; // or wherever you want to go
+          window.location.href = "../dashboard/dashboard.html"; // or wherever you want to go
         }
       })
       .catch((err) => {

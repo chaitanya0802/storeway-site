@@ -1,12 +1,14 @@
+// Base URL for your server
+const base_address = "https://www.api.storeway.xyz/";
+
 //password valid or not check 
 function validatePasswords() {
     //default alert display none
     const alert = document.querySelector('.alert_custom');
     alert.style.display = 'none';
-
     const password = document.getElementById("password").value;
     const confirm = document.getElementById("cPassword").value;
-    const msg = document.getElementById("msg");
+    const msg = document.getElementById("pass_msg");
 
     if (password !== confirm) {
         msg.textContent = " Passwords do not match.";
@@ -17,12 +19,12 @@ function validatePasswords() {
 
         //if password and cpass ok then farther process
         const username = document.getElementById('username');
-        const email = document.getElementById('email');
+        const email = username;
 
         console.log(username.value)
         console.log(email.value)
         const data = { "username": username.value, "email": email.value, "password": password, "role": "Store" };
-        fetch('http://192.168.167.91:8000/signup', {
+        fetch(`${base_address}signup`, {
             method: 'POST',  // 👈 Changed from PUT to POST
             headers: {
                 'Content-Type': 'application/json'
@@ -45,7 +47,7 @@ function validatePasswords() {
             .then(data => {
                 // console.log("User created:", data); // 👈 Updated message
                 if(data){
-                    window.location.href = "http:/storeway-site/store_profile/login.html";
+                    window.location.href = "http:/storeway-site/login_sign_up/login.html";
 
                 }
             })

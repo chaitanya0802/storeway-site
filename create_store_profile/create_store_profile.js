@@ -1,6 +1,13 @@
-//get main categories
-base_address = "http://192.168.95.91:8000/"
+//check user login or not 
+if (!localStorage.getItem("token") || !localStorage.getItem("username")) {
+ window.location.href = "../login_sign_up/login.html";
+}
 
+
+// Base URL for your server
+const base_address = "https://www.api.storeway.xyz/";
+const alert = document.getElementById("error_msg");
+alert.style.display = "none"
 let main_category_msg = document.getElementById("main_category_mag");
 let main_id;//main category id -don't change it
 main_category_msg.innerHTML = "";
@@ -83,10 +90,14 @@ function sub_category_load() {
 
 // get form data
 document.addEventListener("DOMContentLoaded", function () {
+    //check user login or not 
+    if (!localStorage.getItem("token") || !localStorage.getItem("username")) {
+     window.location.href = "../login_sign_up/login.html";
+    }
     // get main category
     const form = document.querySelector("form");
     const sub_category_msg = document.getElementById("sub_category_mag");
-    sub_category_msg.innerHTML=""
+    sub_category_msg.innerHTML = ""
 
     form.addEventListener("submit", function (event) {
         event.preventDefault(); // Prevent default form submission
@@ -119,7 +130,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
 
         //verify
-        if(subCategories.length==0){
+        if (subCategories.length == 0) {
             sub_category_msg.innerHTML = "Please select minimum one category";
             return
         }
@@ -144,18 +155,60 @@ document.addEventListener("DOMContentLoaded", function () {
         fetch(`${base_address}create-store-profile`, {
             method: "POST",
             headers: {
-                Authorization: "Token 5897c572c4819afd273a2e10f6905262022a2b8b",
+                Authorization: `Token ${localStorage.getItem("token")}`,
                 // 'Content-Type': 'application/json'
             },
             body: formData,
         })
-            .then((response) => response.json())
-            .then((data) => {
-                console.log("Success:", data);
+            .then((response) => {
+                if (response.status === 401) {
+                    // Handle Unauthorized response (Token expired or invalid)
+                    alert.style.display = "block";
+                    alert.innerHTML = "Session expired. Please log in again.";
+                        window.location.href = "../login_sign_up/login.html";
+
+                } else if (response.status === 201) {
+                    // Handle successful creation of profile
+                    response.json().then((data) => {
+                        console.log("Success:", data);
+                        if (data.message) {
+                            // Profile already created
+                            alert.style.display = "flex";
+                            alert.innerHTML = "Profile already created.";
+                            window.location.href = "../dashboard/dashboard.html";
+
+                        } else {
+                            // Redirect to dashboard on successful creation
+                            window.location.href = "../dashboard/dashboard.html";
+                        }
+                    });
+
+                } else if (response.status === 409) {
+                    // Handle Duplicate Profile
+                    alert.style.display = "block";
+                    alert.innerHTML = "Profile already exists. Please login.";
+                    window.location.href = "../login_sign_up/login.html";
+
+                } else if (response.status === 400) {
+                    // Handle Bad Request (Incorrect or missing data)
+                    alert.style.display = "block";
+                    alert.innerHTML = "Bad request. Please check the data and try again.";
+                    console.log("Bad Request: 400 -", response.status);
+
+                } else {
+                    // Handle other unexpected status codes
+                    alert.style.display = "block";
+                    alert.innerHTML = "Something went wrong.";
+                    console.log("Unexpected status code:", response.status);
+                }
             })
             .catch((error) => {
+                console.log(error);
+                alert.style.display = "block";
+                alert.innerHTML = "Something went wrong. Please try again later.";
                 console.error("Error:", error);
             });
+
 
     });
 

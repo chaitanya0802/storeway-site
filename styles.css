@@ -67,6 +67,15 @@ header {
     gap: 20px;
 }
 
+.hyperlink_underline{
+    text-decoration: none;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+}
+.hyperlink_underline:active{
+    color: #333;
+}
 .nav-links {
     list-style: none;
     display: flex;

@@ -1,13 +1,16 @@
-// Get base address
-const base_address = "http://192.168.95.91:8000/";
+// Base URL for your server
+const base_address = "https://www.api.storeway.xyz/";
 
+if (!localStorage.getItem("token") || !localStorage.getItem("username")) {
+    window.location.href = "../login_sign_up/login.html";
+}
 const productAddAnimation = document.querySelector(".product_add_animation");
 //product adding animation display none
 productAddAnimation.style.display = "none";
 
 const alert_msg = document.querySelector(".alert")
 //alert_msg display none
-alert_msg.style.display="none"
+alert_msg.style.display = "none"
 
 // Load Main Categories on page load
 let main_category_msg = document.getElementById("main_category_mag");
@@ -32,9 +35,10 @@ fetch(`${base_address}get-categories/main`)
         console.error("Error:", error);
     });
 
-    
+
 // Load Sub Categories when Main Category changes
 function sub_category_load() {
+
     const sub_category_msg = document.getElementById("sub_category_mag");
     sub_category_msg.innerHTML = "";
 
@@ -106,7 +110,7 @@ function sub_category_load() {
 //         // form submit naturally by 'submit' button
 //     });
 
-    
+
 //     const sub_category_msg = document.getElementById("sub_category_mag");
 //     sub_category_msg.innerHTML = "";
 //     // error message clear
@@ -183,12 +187,17 @@ function sub_category_load() {
 // });
 
 document.addEventListener("DOMContentLoaded", function () {
+
+    if (!localStorage.getItem("token") || !localStorage.getItem("username")) {
+        window.location.href = "../login_sign_up/login.html";
+    }
+
     const form = document.querySelector("form");
     const saveAddAnotherBtn = document.getElementById("saveAddAnother");
     const saveProductBtn = document.getElementById("saveProduct");
     const sub_category_msg = document.getElementById("sub_category_mag");
     sub_category_msg.innerHTML = "";
-    alert_msg.style.display="none"
+    alert_msg.style.display = "none"
 
     let stayOnPage = false; // By default redirect
     // If Save and Add Another clicked
@@ -246,7 +255,7 @@ document.addEventListener("DOMContentLoaded", function () {
         fetch(`${base_address}add-product`, {
             method: "POST",
             headers: {
-                Authorization: "Token 5897c572c4819afd273a2e10f6905262022a2b8b"
+                Authorization: `Token ${localStorage.getItem("token")}`
             },
             body: formData
         })
@@ -259,7 +268,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 if (stayOnPage) {
                     form.reset(); // Stay on the page and clear the form
                 } else {
-                    window.location.href = "your_redirect_page.html"; // Redirect to another page
+                    window.location.href = "../dashboard/dashboard.html"; // Redirect to another page
                 }
             })
             .catch(error => {

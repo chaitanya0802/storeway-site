@@ -2,6 +2,9 @@
 const alert = document.getElementById("alert_custom");
 alert.style.display = "none";
 
+// Base URL for your server
+const base_address = "https://www.api.storeway.xyz/";
+
 
 document.getElementById("loginForm").addEventListener("submit", function (e) {
   e.preventDefault(); // prevent default form submit
@@ -9,7 +12,10 @@ document.getElementById("loginForm").addEventListener("submit", function (e) {
   const username = document.getElementById("username").value;
   const password = document.getElementById("password").value;
 
-  fetch("http://192.168.167.91:8000/login", {
+  //remove alert msg ofter click on submit
+  alert.innerHTML ="";
+
+  fetch(`${base_address}login`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -30,7 +36,7 @@ document.getElementById("loginForm").addEventListener("submit", function (e) {
       if (data.token) {
         localStorage.setItem("token", data.token);
         localStorage.setItem("username", username);
-        window.location.replace("http:/storeway-site/store_profile/login.html");
+        checkProfileStatus();
         // Redirect or other action
       } else {
         alert("Login failed. No token received.");
@@ -39,16 +45,83 @@ document.getElementById("loginForm").addEventListener("submit", function (e) {
     .catch((err) => {
       console.log(err.status)
       if (err.status === 400) {
-        const alert = document.getElementById("alert_custom");
-        const msg = document.getElementById("msg");
-        alert.style.display = "block"; // Show the box
-        msg.innerHTML = "Invalid username or password"; // Change content
-      } 
-      else{
-        const alert = document.getElementById("alert_custom");
-      const msg = document.getElementById("msg");
-      alert.style.display = "block"; // Show the box
-      msg.innerHTML = "Something went wrong"; // Change content
+        alertBox("Incorrect Username or Password.")
+
+      }
+      else {
+        alertBox("Something Went Wrong.")
       }
     });
 });
+
+
+//check profile made or not 
+// function checkProfileStatus() {
+//   fetch(`${base_address}store-profile-status`)
+//     .then(response => response.json())
+//     .then(data => {
+//       if (data.message === "Already has StoreProfile") {
+//         console.log("profile exist")
+//         // window.location.href = "http:/storeway-site/dashboard/dashboard.html"; // 🔁 Change to your desired page
+//       } else {
+//         // Redirect if profile does not exist
+//                 console.log("profile not exist")
+//         // window.location.replace("http:/storeway-site/create_store_profile/create_store_profile.html");
+//       }
+//     })
+//     .catch(error => {
+//       alertBox("Something Went Wrong.")
+
+//     });
+// }
+function checkProfileStatus() {
+  const token = localStorage.getItem("token"); // or sessionStorage if you store it there
+
+  if (!token) {
+    alertBox("You are not logged in.");
+
+    window.location.href = "http://storeway-site/login_sign_up/login.html"; // or your login page
+    return;
+  }
+
+  fetch(`${base_address}store-profile-status`, {
+    headers: {
+      "Authorization": `Token ${token}`,  // required for protected endpoints
+      "Content-Type": "application/json"
+    }
+  })
+    .then(response => {
+      if (response.status === 200) {
+        console.log("Profile exists");
+        // window.location.href = "http:/storeway-site/login_sign_up/login.html";
+        window.location.href = "http:/storeway-site/dashboard/dashboard.html";
+      } else if (response.status === 404) {
+        console.log("Profile does not exist");
+        window.location.href = "http:/storeway-site/create_store_profile/create_store_profile.html";
+      } else if (response.status === 401) {
+        alertBox("Session expired. Please log in again.");
+        // window.location.href = "http://storeway-site/login.html";
+      } else {
+        alertBox("Unexpected response from server.");
+        console.log("Status code:", response.status);
+      }
+    })
+    .catch(error => {
+      alertBox("Something went wrong.");
+      console.error("Error:", error);
+    });
+}
+
+
+//alert box
+function alertBox(msg) {
+  const alert = document.getElementById("alert_custom");
+  alert.insertAdjacentHTML('beforeEnd', `
+          <div id="alert_custom" class="alert container alert-warning alert-dismissible fade show" role="alert">
+        <strong id="msg">${msg}!!!</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+`);
+  alert.style.display = "block"; // Show the box
+
+}

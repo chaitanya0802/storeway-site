@@ -32,8 +32,8 @@
 
 
                     <li class="nav_list"> <a href="#" onclick="showPopup('help')"><i class="bi bi-person-circle"></i>
-                            &nbsp; Ganesh bodakhe</a></li>
-                    <li class="nav_list"><a href="#"><i class="bi bi-box-arrow-right"></i>&nbsp; logged out</a> </li>
+                            &nbsp<span id="user_name"></span></a></li>
+                    <li class="nav_list" ><a href="#" id="logout"><i class="bi bi-box-arrow-right"></i>&nbsp; log out</a> </li>
                     <div class="buttons">
                         <button class="btn-outline" onclick="showPopup('get-started')">
                             <a href="../add_product/add_product.html">Add Products</a>
@@ -41,7 +41,7 @@
                     </div>
                     <div class="buttons">
                         <button class="btn-outline" onclick="showPopup('get-started')">
-                            <a href="../store_profile/sign_up.html">Add Offers</a>
+                            <a href="../add_offer/add_offers.html">Add Offers</a>
                         </button>
                     </div>
                 </div>
@@ -94,7 +94,7 @@
                             <!-- card -->
                             <div class="col-5 col-md-6 mb-3 d-flex justify-content-center">
                                 <div class="card_outer text-center p-3 shadow rounded-4">
-                                    <i class="bi bi-person-vcard fs-2 mb-2"></i>
+                                    <i class="bi bi-cart"></i>
                                     <strong>Total Products</strong>
                                     <h3 id="total_products">000</h3>
                                 </div>
@@ -103,7 +103,7 @@
                             <div class="col-5 col-md-6 mb-3 d-flex justify-content-center">
                                 <div class="card_outer text-center p-3 shadow rounded-4"
                                     style="background-color: rgb(220, 252, 231)">
-                                    <i class="bi bi-person-vcard fs-2 mb-2"></i>
+                                    <i class="bi bi-box-fill"></i>
                                     <strong>Total Offers</strong>
                                     <h3 id="total_offers">000</h3>
                                 </div>
