@@ -67,13 +67,13 @@ form h3 {
   color: #5557b0;
 }
 
-label {
+/* label {
   display: block;
   margin-top: 30px;
   font-size: 16px;
   font-weight: 500;
   color: #5557b0;
-}
+} */
 
 input {
   display: block;
