@@ -1,17 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <title>Responsive Glassmorphism Login Form</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Glassmorphism Login Form</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
- 
-  <link rel="stylesheet" href="./login.css">
-  <link rel="stylesheet" href="../styles.css">
 
-  <!-- bootstrap cdn  -->
-     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" />
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="./login.css">
+    <link rel="stylesheet" href="../styles.css">
+
+    <!-- bootstrap cdn  -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
+
 <body>
 
     <header>
@@ -28,17 +31,55 @@
                     <span></span>
                 </label>
                 <div class="nav-content">
-                    <nav>
+                    
                         <ul class="nav-links">
-                            <li><a href="#">Contact Us</a></li>
-                            <li><a href="#" >Help</a></li>
+                            <li><span  onclick="showPopup('about')">About Us</span></li>
+                            <li><span  onclick="showPopup('contact')">Contact Us</span></li>
+                            <li><span onclick="showPopup('help')">More info</span></li>
                         </ul>
-                    </nav>
+                   
                 </div>
             </div>
         </div>
     </header>
+    <!-- pop ups -->
+    <div id="about" class="chat-popup">
+        <div class="chat-header">
+            <span>About Us</span>
+            <button class="close-btn" onclick="closePopup('about')">&times;</button>
+        </div>
+        <div class="chat-body">
+            <ul class="aobut_list">
+                <li>Effortless product discovery for customers</li>
+                <li>All offers searchable in one place</li>
+                <li>Users are directed straight to your website on click</li>
+                <li>Zero percent commission</li>
+                <li>Boost visibility with events like Big D2C Days Sale</li>
+                <li>Designed to drive reach, traffic, and sales directly to your brand</li>
+            </ul>
+        </div>
+    </div>
 
+    <div id="contact" class="chat-popup">
+        <div class="chat-header">
+            <span>Contact Us</span>
+            <button class="close-btn" onclick="closePopup('contact')">&times;</button>
+        </div>
+        <div class="chat-body">
+            <p>Email: <a href="mailto:chaitanya7447">chaitanya7447@gmail.com</a><br>
+                Phone: +917447844899</p>
+        </div>
+    </div>
+    <div id="help" class="chat-popup">
+        <div class="chat-header">
+            <span>More info </span>
+            <button class="close-btn" onclick="closePopup('help')">&times;</button>
+        </div>
+        <div class="chat-body">
+            <p>For more info contact: chaitanya7447@gmail.com</p>
+        </div>
+    </div>
+    <!-- pop ends -->
     <!-- alert msg -->
     <div class="d" id="alert_custom">
         <!-- <div id="alert_custom" class="alert  container alert-warning alert-dismissible fade show" role="alert">
@@ -46,33 +87,50 @@
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
           </div> -->
     </div>
- <div class="login_outer">
-  <form id="loginForm">
-    <h3>Login Here</h3>
+    <div class="login_outer">
+        <form id="loginForm">
+            <h3>Login Here</h3>
 
-    <label for="username">Email</label>
-    <input type="text" placeholder="Enter Email" name=" username" id="username" autocomplete="username" required>
+            <label for="username">Email</label>
+            <input type="text" placeholder="Enter Email" name=" username" id="username" autocomplete="username"
+                required>
 
-    <label for="password">Password</label>
-    <input type="password" placeholder="Password" name="password" id="password" autocomplete="current-password" required>
+            <label for="password">Password</label>
+            <input type="password" placeholder="Password" name="password" id="password" autocomplete="current-password"
+                required>
 
-    <button class="button" type="submit">Log In</button>
-    <br>
-    <p class="sign_in">Don't have account  <a  href="./sign_up.html">sign in</a></p>
-  </form>
-</div>
+            <button class="button" type="submit">Log In</button>
+            <br>
+            <p class="sign_in">Don't have account <a href="./sign_up.html">sign in</a></p>
+        </form>
+    </div>
     <!-- footer -->
     <footer class="footer">
-        <p>Contact: <a href="mailto:chaitanya7447@gmail.com">chaitanya7447@gmail.com</a>  | <a href="tel:7447844899">7447844899</a></p>
-        <p style="margin-top: 16px;"><span style="font-weight: bold;">About:</span>   We are just college students working on projects and trying out new things</p>
+        <p>Contact: <a href="mailto:chaitanya7447@gmail.com">chaitanya7447@gmail.com</a> | <a
+                href="tel:7447844899">7447844899</a></p>
+        <p style="margin-top: 16px;"><span style="font-weight: bold;">About:</span> </p>
+        <ul class="aobut_list" style="list-style-type: none;">
+            <li>Effortless product discovery for customers</li>
+            <li>All offers searchable in one place</li>
+            <li>Users are directed straight to your website on click</li>
+            <li>Zero percent commission</li>
+            <li>Boost visibility with events like Big D2C Days Sale</li>
+            <li>Designed to drive reach, traffic, and sales directly to your brand</li>
+        </ul>
     </footer>
 
-      <!-- scripts -->
-     <script src="./login.js"></script>
+    <!-- scripts -->
+    <script src="./login.js"></script>
+    <script src="../popup.js"></script>
     <!-- bootstrap cdn js-->
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
-   
- 
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+        integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
+        crossorigin="anonymous"></script>
+
+
 </body>
+
 </html>

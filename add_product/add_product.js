@@ -172,9 +172,9 @@ document.addEventListener("DOMContentLoaded", function () {
             .then(response => response.json())
             .then(data => {
                 console.log("Product created successfully:", data);
+                 productAddAnimation.style.display = "none";
                 alert(data.message);
-                productAddAnimation.style.display = "none";
-
+            
                 if (stayOnPage) {
                     form.reset(); // Stay on the page and clear the form
                 } else {

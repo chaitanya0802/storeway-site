@@ -6,6 +6,9 @@ body{
     background-size: cover;
 
 }
+.alert{
+    display: none;
+}
 .label_heading{
     color:rgb(104, 107, 247);
 }

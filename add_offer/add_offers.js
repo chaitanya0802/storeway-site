@@ -203,8 +203,8 @@ document.addEventListener("DOMContentLoaded", function () {
     })
       .then((res) => res.json())
       .then((data) => {
-        alert(data.message);
         offer_add_animation.style.display = "none";
+        alert(data.message);
         form.reset();
         sub_category_msg.innerHTML = "";
         if (stayOnPage) {
