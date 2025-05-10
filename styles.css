@@ -629,7 +629,7 @@ video {
 .footer-links {
     list-style: none;
     display: flex;
-    justify-content: center;
+    justify-content:center;
     flex-wrap: wrap;
     gap: 20px;
     padding-top: 15px;

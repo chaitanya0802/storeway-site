@@ -1,5 +1,8 @@
 // Base URL for your server
 const base_address = "https://www.api.storeway.xyz/";
+    //default alert display none
+    const alert = document.getElementById('alert_custom');
+    alert.style.display = 'none';
 
 //password valid or not check 
 document.getElementById('myForm').addEventListener('submit', function(event) {
@@ -8,7 +11,7 @@ document.getElementById('myForm').addEventListener('submit', function(event) {
 });
 function validatePasswords() {
     //default alert display none
-    const alert = document.querySelector('.alert_custom');
+    const alert = document.getElementById('alert_custom');
     alert.style.display = 'none';
     const password = document.getElementById("password").value;
     const confirm = document.getElementById("cPassword").value;
@@ -37,7 +40,7 @@ function validatePasswords() {
         })
             .then(res => {
                 if (res.status === 400) {
-                    const alert = document.querySelector('.alert_custom');
+                    const alert = document.getElementById('alert_custom');
                     const msg = document.getElementById('msg');
                     alert.style.display = 'block';           // Show the box
                     msg.innerHTML = "User already Exit"; // Change content
@@ -57,7 +60,7 @@ function validatePasswords() {
             })
             .catch(err => {
                 if(err){
-                    const alert = document.querySelector('.alert_custom');
+                    const alert = document.getElementById('alert_custom');
                     const msg = document.getElementById('msg');
                     alert.style.display = 'block';           // Show the box
                     msg.innerHTML = "Something went wrong"; // Change contkent
