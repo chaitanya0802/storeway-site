@@ -1,8 +1,12 @@
 // Base URL for your server
 const base_address = "https://www.api.storeway.xyz/";
+//check is token present or not 
+if (!localStorage.getItem("token") || !localStorage.getItem("username")) {
+  window.location.href = "../login_sign_up/login.html";
+}
 
 let offerId = "";
-const token = "f1dd9973254a10783e7e13b0ca369c9e87624d3b"; // Or use a hardcoded token for testing
+const token = localStorage.getItem("token"); // Or use a hardcoded token for testing
 // Elements
 const alert_msg = document.querySelector(".alert");
 alert_msg.style.display = "none";
@@ -19,6 +23,10 @@ offer_add_animation.style.display = "none";
 
 //det data from server 
 document.addEventListener("DOMContentLoaded", () => {
+  //check is token present or not 
+  if (!localStorage.getItem("token") || !localStorage.getItem("username")) {
+    window.location.href = "../login_sign_up/login.html";
+  }
   const urlParams = new URLSearchParams(window.location.search);
   offerId = urlParams.get("id");
 
@@ -71,7 +79,7 @@ function populateForm(offer) {
 
   let formatted = convertToISO(offer.offer_start);
   form.querySelector("input[type='datetime-local']").value = formatted;
-  form.querySelectorAll("input[type='datetime-local']")[1].value =   convertToISO(offer.offer_end);
+  form.querySelectorAll("input[type='datetime-local']")[1].value = convertToISO(offer.offer_end);
   ;
   // Additional logic for setting category, sub-category, and image if needed
 }
@@ -80,6 +88,10 @@ function populateForm(offer) {
 
 // Handle Offer Form Submission
 document.addEventListener("DOMContentLoaded", function () {
+  //check is token present or not 
+  if (!localStorage.getItem("token") || !localStorage.getItem("username")) {
+    window.location.href = "../login_sign_up/login.html";
+  }
   const form = document.querySelector("form");
   const saveOfferBtn = document.getElementById("saveOffer"); // Add ID to your Save Offer button
   const saveAndAddAnotherBtn = document.getElementById("saveAddAnother"); // Add ID to your Save and Add Another button
@@ -112,13 +124,13 @@ document.addEventListener("DOMContentLoaded", function () {
     const offerEnd = form.querySelectorAll("input[type='datetime-local']")[1]
       .value;
 
-      console.log(offerStart)
+    console.log(offerStart)
 
     const formData = new FormData();
     if (offerId) formData.append("offer_id", offerId);
     formData.append("offer_name", offerName);
     formData.append("offer_url", offerURL);
-    if(offerImage){
+    if (offerImage) {
       formData.append("offer_image", offerImage);
     }
     formData.append("offer_description", offerDescription);
@@ -133,7 +145,7 @@ document.addEventListener("DOMContentLoaded", function () {
     offer_add_animation.style.display = "flex";
 
     // Send Data
-   
+
     console.log(offerId)
     fetch(`${base_address}update-offer/${offerId}`, {
       method: "PATCH",
@@ -142,20 +154,20 @@ document.addEventListener("DOMContentLoaded", function () {
       },
       body: formData
     })
-    .then((res) => {
-      if (!res.ok) throw new Error("Server error");
-      return res.json();
-    })
-    .then((data) => {
-      offer_add_animation.style.display = "none";
-      alert("Offer Updated Successfully");
-      window.location.href = "../dashboard/dashboard.html";
-    })
-    .catch((err) => {
-      offer_add_animation.style.display = "none";
-      alert_msg.style.display = "block";
-      alert_msg.innerHTML = "<strong>Something Went Wrong</strong>";
-      console.error("Error Updating offer:", err);
-    });
+      .then((res) => {
+        if (!res.ok) throw new Error("Server error");
+        return res.json();
+      })
+      .then((data) => {
+        offer_add_animation.style.display = "none";
+        alert("Offer Updated Successfully");
+        window.location.href = "../dashboard/dashboard.html";
+      })
+      .catch((err) => {
+        offer_add_animation.style.display = "none";
+        alert_msg.style.display = "block";
+        alert_msg.innerHTML = "<strong>Something Went Wrong</strong>";
+        console.error("Error Updating offer:", err);
+      });
   });
 });

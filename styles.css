@@ -35,8 +35,18 @@ header {
     padding: 0 20px;
     flex-wrap: wrap;
 }
+.navbar_custom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0 20px;
+    flex-wrap: wrap;
+}
 
 .logo {
+    cursor: pointer;
     margin-left:10px;
     display: flex;
     align-items: center;

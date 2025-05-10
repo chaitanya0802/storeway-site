@@ -35,7 +35,7 @@ document.getElementById("loginForm").addEventListener("submit", function (e) {
     .then((data) => {
       if (data.token) {
         localStorage.setItem("token", data.token);
-        localStorage.setItem("username", username);
+        localStorage.setItem("username", username.length>7? username.substring(0, 7) + "..."  : substring);
         checkProfileStatus();
         // Redirect or other action
       } else {

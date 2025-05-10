@@ -17,6 +17,10 @@
 .nav_list a{
     text-decoration: none;
 }
+.nav_btn{
+  color:white;
+  text-decoration: none;
+}
 .card_outer{
     background-color: rgb(255,226,230);
     width: 150px;
@@ -116,11 +120,11 @@
 }
 
 /* tooltip color */
-  .custom-tooltip .tooltip-inner {
+  /* .custom-tooltip .tooltip-inner {
     background-color:  #6c47ff;
-    color: #ffffff; /* white text */
+    color: #ffffff; 
     border: 1px solid rgb(118, 118, 118);
-  }
+  } */
 
   .custom-tooltip .tooltip-arrow::before {
     /* background-color:  #ffffff; */

@@ -45,14 +45,29 @@ function fetchStoreProfile() {
             return res.json();
         })
         .then(data => {
-            document.getElementById("shop_name").textContent = data.store_name;
-            document.getElementById("tab_line").textContent = data.store_tagline;
+            document.getElementById("shop_name").innerHTML = `<span data-bs-toggle="tooltip"
+                data-bs-html="true"
+                data-bs-custom-class="custom-tooltip"
+                data-bs-title="<em>${data.store_name}</em>">
+                ${truncateText(data.store_name, 13)}
+          </span>` 
+            document.getElementById("tab_line").innerHTML = `<span data-bs-toggle="tooltip"
+                data-bs-html="true"
+                data-bs-custom-class="custom-tooltip"
+                data-bs-title="<em>${data.store_tagline}</em>">
+                ${truncateText(data.store_tagline, 20)}
+          </span>` ;
             const storeUrlEl = document.getElementById("shop_url");
             storeUrlEl.href = data.website_url;
-            storeUrlEl.textContent = data.website_url;
+            storeUrlEl.innerHTML = `<span data-bs-toggle="tooltip"
+                data-bs-html="true"
+                data-bs-custom-class="custom-tooltip"
+                data-bs-title="<em>${data.website_url}</em>">
+                ${truncateText(data.website_url, 20)}
+          </span>` ;;
             document.getElementById("shop_logo").src = data.store_logo_image;
 
-            document.getElementById("total_products").textContent = data.total_products;
+            document.getElementById("total_products").innerHTML =  data.total_products;
             document.getElementById("total_offers").textContent = data.total_offers;
 
             // Hide error message if it was shown previously

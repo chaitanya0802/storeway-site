@@ -16,8 +16,8 @@
 
 <body>
     <header>
-        <div class="navbar">
-            <div class="logo">
+        <div class="navbar_custom">
+            <div class="logo"  onclick="location.href='dashboard.html'">
                 <img src="../media/storeway_logo_svg.svg" alt="logo" />
                 <h1>Storeway</h1>
             </div>
@@ -31,18 +31,14 @@
                 <div class="nav-content">
 
 
-                    <li class="nav_list"> <a href="#" onclick="showPopup('help')"><i class="bi bi-person-circle"></i>
+                    <li class="nav_list"> <a href="../dashboard/dashboard.html" ><i class="bi bi-person-circle"></i>
                             &nbsp<span id="user_name"></span></a></li>
                     <li class="nav_list" ><a href="#" id="logout"><i class="bi bi-box-arrow-right"></i>&nbsp; log out</a> </li>
-                    <div class="buttons">
-                        <button class="btn-outline" onclick="showPopup('get-started')">
-                            <a href="../add_product/add_product.html">Add Products</a>
-                        </button>
+                    <div class="buttons ">
+                            <a class="btn-outline nav_btn" href="../add_product/add_product.html">Add Products</a>
                     </div>
                     <div class="buttons">
-                        <button class="btn-outline" onclick="showPopup('get-started')">
-                            <a href="../add_offer/add_offers.html">Add Offers</a>
-                        </button>
+                            <a  class="btn-outline nav_btn" href="../add_offer/add_offers.html">Add Offers</a>
                     </div>
                 </div>
             </div>
@@ -76,7 +72,6 @@
                                     style="width: 100px; height: 100px; object-fit: cover" alt="Circular Image" />
                             </div>
                             <div class="col-7">
-
                                 <h3 id="shop_name">Shop Name</h3>
                                 <p id="tab_line">Tag Line</p>
                                 <a class="store_url" id="shop_url" href="#">Store URL</a>

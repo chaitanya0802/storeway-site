@@ -1,9 +1,14 @@
 // Base URL for your server
 const base_address = "https://www.api.storeway.xyz/";
 
+//check is token present or not 
 if (!localStorage.getItem("token") || !localStorage.getItem("username")) {
-    window.location.href = "../login_sign_up/login.html";
+  window.location.href = "../login_sign_up/login.html";
 }
+document.getElementById("user_name").innerHTML = localStorage.getItem("username")
+
+
+
 const productAddAnimation = document.querySelector(".product_add_animation");
 //product adding animation display none
 productAddAnimation.style.display = "none";
@@ -90,101 +95,6 @@ function sub_category_load() {
         });
 }
 
-// Submit Product Form
-// document.addEventListener("DOMContentLoaded", function () {
-//     const form = document.querySelector("form");
-//     const saveAddAnotherBtn = document.getElementById("saveAddAnother");
-//     const saveProductBtn = document.getElementById("saveProduct");
-
-//     //handle which button click 1 (save ) or ( save and add another product)
-//     let stayOnPage = false; // By default redirect
-//     alert_msg.style.display = "none";
-//     // If Save and Add Another clicked
-//     saveAddAnotherBtn.addEventListener("click", function () {
-//         stayOnPage = true;
-//         form.requestSubmit(); // Programmatically submit form
-//     });
-//     // If Save Product clicked
-//     saveProductBtn.addEventListener("click", function () {
-//         stayOnPage = false;
-//         // form submit naturally by 'submit' button
-//     });
-
-
-//     const sub_category_msg = document.getElementById("sub_category_mag");
-//     sub_category_msg.innerHTML = "";
-//     // error message clear
-//     alert_msg.style.display="none"
-
-//     form.addEventListener("submit", function (event) {
-//         event.preventDefault();
-
-//         // Get Form Values
-//         const productId = form.querySelector("input[placeholder='Leave blank for auto ID']").value;
-//         const productName = form.querySelector("input[placeholder='ProductName']").value;
-//         const productURL = form.querySelector("input[type='url']").value;
-//         const productImage = form.querySelector("input[type='file']").files[0];
-//         const productPrice = form.querySelector("input[placeholder='Enter price']").value;
-//         const productDescription = form.querySelector("textarea").value;
-//         const productRating = form.querySelector("#product_rating").value;
-//         console.log(productRating)
-//         // Subcategories
-//         const subCategories = [];
-//         form.querySelectorAll("input[name='subcategories']:checked").forEach(checkbox => {
-//             subCategories.push(parseInt(checkbox.id));
-//         });
-
-//         if (subCategories.length === 0) {
-//             sub_category_msg.innerHTML = "Please select at least one sub-category.";
-//             return;
-//         }
-//         // get main category
-//         subCategories.push(parseInt(main_id))
-//         // console.log(subCategories)
-
-//         // Prepare FormData
-//         const formData = new FormData();
-//         if (productId) {
-//             formData.append("product_id", productId);
-//         }
-//         formData.append("product_name", productName);
-//         formData.append("product_url", productURL);
-//         formData.append("product_image", productImage);
-//         formData.append("price", productPrice);
-//         formData.append("product_description", productDescription);
-//         formData.append("product_rating", productRating);
-
-//         subCategories.forEach(id => formData.append("category", id));
-//         //product adding animation
-//         productAddAnimation.style.display = "flex";
-//         // Send Data to Backend
-//         fetch(`${base_address}add-product`, {
-//             method: "POST",
-//             headers: {
-//                 Authorization: "Token 5897c572c4819afd273a2e10f6905262022a2b8b"
-//             },
-//             body: formData
-//         })
-//             .then(response => response.json())
-//             .then(data => {
-//                 console.log("Product created successfully:", data);
-//                 alert(data.message);
-//                 form.reset();
-//                 productAddAnimation.style.display = "none";
-//                 if (stayOnPage) {
-//                     form.reset(); // Stay on the page and clear the form
-//                 } else {
-//                     window.location.href = "http:/storeway-site/store_profile/login.html";
-//                 }
-//             })
-//             .catch(error => {
-//                 productAddAnimation.style.display = "none";
-//                 alert_msg.style.display="block"
-//                 alert_msg.innerHTML = "<strong>Something Went wrong</strong>";
-//                 console.error("Error creating product:", error);
-//             });
-//     });
-// });
 
 document.addEventListener("DOMContentLoaded", function () {
 

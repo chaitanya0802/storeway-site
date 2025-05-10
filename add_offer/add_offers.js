@@ -1,9 +1,12 @@
 // Base URL for your server
 const base_address = "https://www.api.storeway.xyz/";
 
+//check is token present or not 
 if (!localStorage.getItem("token") || !localStorage.getItem("username")) {
   window.location.href = "../login_sign_up/login.html";
 }
+document.getElementById("user_name").innerHTML = localStorage.getItem("username")
+
 // Elements
 const alert_msg = document.querySelector(".alert");
 alert_msg.style.display = "none";
@@ -138,6 +141,11 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   form.addEventListener("submit", function (event) {
+
+    if (!localStorage.getItem("token") || !localStorage.getItem("username")) {
+      window.location.href = "../login_sign_up/login.html";
+    }
+
     event.preventDefault();
 
     const offerId = form.querySelector(
