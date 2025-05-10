@@ -2,6 +2,10 @@
 const base_address = "https://www.api.storeway.xyz/";
 
 //password valid or not check 
+document.getElementById('myForm').addEventListener('submit', function(event) {
+  event.preventDefault(); // Prevents the form from submitting
+  validatePasswords();    // Calls your custom function
+});
 function validatePasswords() {
     //default alert display none
     const alert = document.querySelector('.alert_custom');
