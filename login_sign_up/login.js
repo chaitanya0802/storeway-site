@@ -94,7 +94,7 @@ function checkProfileStatus() {
       if (response.status === 200) {
         console.log("Profile exists");
         // window.location.href = "http:/storeway-site/login_sign_up/login.html";
-        window.location.href = "http:/storeway-site/dashboard/dashboard.html";
+        window.location.href = "../dashboard/dashboard.html";
       } else if (response.status === 404) {
         console.log("Profile does not exist");
         window.location.href = "http:/storeway-site/create_store_profile/create_store_profile.html";

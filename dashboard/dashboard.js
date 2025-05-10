@@ -105,7 +105,7 @@ const prevBtnProduct = document.getElementById("prev-btn-product");
 const nextBtnProduct = document.getElementById("next-btn-product");
 
 table_alert.style.display = "none";
-const pageSize = 2;
+const pageSize = 10;
 let currentPage = 1;
 let totalPages = 1;
 
