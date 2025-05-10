@@ -97,7 +97,7 @@ function checkProfileStatus() {
         window.location.href = "../dashboard/dashboard.html";
       } else if (response.status === 404) {
         console.log("Profile does not exist");
-        window.location.href = "http:/storeway-site/create_store_profile/create_store_profile.html";
+        window.location.href = "../create_store_profile/create_store_profile.html";
       } else if (response.status === 401) {
         alertBox("Session expired. Please log in again.");
         // window.location.href = "http://storeway-site/login.html";
