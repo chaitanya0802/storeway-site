@@ -47,7 +47,7 @@ function validatePasswords() {
             .then(data => {
                 // console.log("User created:", data); // 👈 Updated message
                 if(data){
-                    window.location.href = "http:/storeway-site/login_sign_up/login.html";
+                    window.location.href = "../login_sign_up/login.html";
 
                 }
             })

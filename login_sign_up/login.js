@@ -80,7 +80,7 @@ function checkProfileStatus() {
   if (!token) {
     alertBox("You are not logged in.");
 
-    window.location.href = "http://storeway-site/login_sign_up/login.html"; // or your login page
+    window.location.href = "../login_sign_up/login.html"; // or your login page
     return;
   }
 
