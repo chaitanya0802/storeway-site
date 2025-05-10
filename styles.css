@@ -701,7 +701,7 @@ video {
         padding: 20px;
         box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
         transform: translateY(-170%);
-        transform: translateX(170%);
+        /* transform: translateX(170%); */
         transition: transform 0.3s ease-in-out;
         z-index: 100;
         /* display: none; */
@@ -710,7 +710,7 @@ video {
     .menu-toggle:checked~.nav-content {
         display: flex;
         transform: translateY(0);
-        transform: translateX(0);
+        /* transform: translateX(0); */
     }
 
     .nav-links {
