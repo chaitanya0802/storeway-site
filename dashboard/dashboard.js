@@ -278,7 +278,7 @@ const prevBtnOffer = document.getElementById("prev-btn-offer");
 const nextBtnOffer = document.getElementById("next-btn-offer");
 const offer_alert = document.getElementById("offers_alert_msg");
 
-const offerPageSize = 2;
+const offerPageSize = 10;
 let currentOfferPage = 1;
 let totalOfferPages = 1;
 
