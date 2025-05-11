@@ -1,3 +1,33 @@
+document.addEventListener('DOMContentLoaded', () => {
+  const token = localStorage.getItem('token');
+
+  if (token) {
+    fetch('https://www.api.storeway.xyz/store-profile-status', {
+      method: 'GET',
+      headers: {
+        'Authorization': `Token ${token}`,
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(response => {
+      if (response.status === 200) {
+        // Store profile exists
+        window.location.href = '../dashboard/dashboard.html';
+      } else if (response.status === 404) {
+        // Store profile does not exist
+        window.location.href = '../create_store_profile/create_store_profile.html';
+      } else {
+        console.error('Unexpected response:', response.status);
+      }
+    })
+    .catch(error => {
+      console.error('Error checking store profile status:', error);
+    });
+  }
+});
+
+
+
 document.addEventListener("DOMContentLoaded", function () {
     const video = document.getElementById("video");
     const loader = document.querySelector(".loader");
