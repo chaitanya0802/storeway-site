@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Data Deletion Request</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 2rem;
+      max-width: 700px;
+      margin: auto;
+      background-color: #f9f9f9;
+    }
+    h1 {
+      color: #333;
+    }
+    p {
+      line-height: 1.6;
+    }
+    form {
+      margin-top: 20px;
+    }
+    label, input, textarea {
+      display: block;
+      width: 100%;
+      margin-top: 10px;
+    }
+    input, textarea {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      background-color: #007bfc;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #005fc1;
+    }
+  </style>
+</head>
+<body>
+  <h1>Request Account & Data Deletion</h1>
+  <p>If you would like to request deletion of your Storeway account and all associated data, please fill out the form below. We will process your request in accordance with our Privacy Policy.</p>
+  <p>Alternatively, you can email us directly at <strong>chaitanya7447@gmail.com</strong></p>
+
+  <form action="mailto:chaitanya7447@gmail.com" method="POST" enctype="text/plain">
+    <label for="name">Your Name (optional):</label>
+    <input type="text" id="name" name="name">
+
+    <label for="email">Your Email (required):</label>
+    <input type="email" id="email" name="email" required>
+
+    <label for="phone">Your Phone Number (required):</label>
+    <input type="tel" id="phone" name="phone" required placeholder="+1234567890">
+
+    <label for="message">Request Details:</label>
+    <textarea id="message" name="message" rows="5" placeholder="Please delete my account and all associated data."></textarea>
+
+    <button type="submit">Submit Request</button>
+  </form>
+</body>
+</html>
