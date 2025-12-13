@@ -1,5 +1,6 @@
 // Base URL for your server
-const base_address = "https://www.api.storeway.xyz/";
+const base_address = "http://127.0.0.1:8000/site/";
+// const base_address = "https://www.api.storeway.xyz/site/";
 
 //check is token present or not 
 if (!localStorage.getItem("token") || !localStorage.getItem("username")) {
@@ -154,8 +155,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const offerName = form.querySelector(
       "input[placeholder='StoreName OfferName']"
     ).value;
-    const offerURL = form.querySelector("input[type='url']").value;
-    const offerImage = form.querySelector("input[type='file']").files[0];
+    const offerURL = form.querySelector("input[id='ourl']").value;
+    const offerImage = form.querySelector("input[id='oimg']").value;
     const offerDescription = form.querySelector("textarea").value;
     const offerStart = form.querySelector("input[type='datetime-local']").value;
     const offerEnd = form.querySelectorAll("input[type='datetime-local']")[1]

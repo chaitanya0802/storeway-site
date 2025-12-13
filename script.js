@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const token = localStorage.getItem('token');
 
   if (token) {
-    fetch('https://www.api.storeway.xyz/store-profile-status', {
+    fetch('https://127.0.0.1:8000/site/store-profile-status', {
       method: 'GET',
       headers: {
         'Authorization': `Token ${token}`,

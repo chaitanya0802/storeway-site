@@ -1,5 +1,7 @@
 // Base URL for your server
-const base_address = "https://www.api.storeway.xyz/";
+const base_address = "http://127.0.0.1:8000/site/";
+
+// const base_address = "https://www.api.storeway.xyz/site/";
 
 //check is token present or not 
 if (!localStorage.getItem("token") || !localStorage.getItem("username")) {
@@ -128,9 +130,10 @@ document.addEventListener("DOMContentLoaded", function () {
         // Get Form Values
         const productId = form.querySelector("input[placeholder='Leave blank for auto ID']").value;
         const productName = form.querySelector("input[placeholder='ProductName']").value;
-        const productURL = form.querySelector("input[type='url']").value;
-        const productImage = form.querySelector("input[type='file']").files[0];
+        const productURL = form.querySelector("input[id='purl']").value;
+        const productImage = form.querySelector("input[id='pimg']").value;
         const productPrice = form.querySelector("input[placeholder='Enter price']").value;
+        const productDiscount = form.querySelector("#discount_percent")?.value || 0;
         const productDescription = form.querySelector("textarea").value;
         const productRating = form.querySelector("#product_rating")?.value || 0;
 
@@ -155,6 +158,7 @@ document.addEventListener("DOMContentLoaded", function () {
         formData.append("product_url", productURL);
         formData.append("product_image", productImage);
         formData.append("price", productPrice);
+        formData.append("discount_percent", productDiscount);
         formData.append("product_description", productDescription);
         formData.append("product_rating", productRating);
         subCategories.forEach(id => formData.append("category", id));

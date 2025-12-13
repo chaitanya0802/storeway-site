@@ -3,7 +3,8 @@ const alert = document.getElementById("alert_custom");
 alert.style.display = "none";
 
 // Base URL for your server
-const base_address = "https://www.api.storeway.xyz/";
+const base_address = "http://127.0.0.1:8000/site/";
+// const base_address = "https://www.api.storeway.xyz/site/";
 
 
 document.getElementById("loginForm").addEventListener("submit", function (e) {
@@ -15,7 +16,7 @@ document.getElementById("loginForm").addEventListener("submit", function (e) {
   //remove alert msg ofter click on submit
   alert.innerHTML ="";
 
-  fetch(`${base_address}login`, {
+  fetch(`${base_address}site-login`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

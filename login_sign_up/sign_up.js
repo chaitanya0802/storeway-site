@@ -1,5 +1,7 @@
 // Base URL for your server
-const base_address = "https://www.api.storeway.xyz/";
+const base_address = "http://127.0.0.1:8000/site/";
+// const base_address = "https://www.api.storeway.xyz/site/";
+
     //default alert display none
     const alert = document.getElementById('alert_custom');
     alert.style.display = 'none';
@@ -31,7 +33,7 @@ function validatePasswords() {
         console.log(username.value)
         console.log(email.value)
         const data = { "username": username.value, "email": email.value, "password": password, "role": "Store" };
-        fetch(`${base_address}signup`, {
+        fetch(`${base_address}sitesignup`, {
             method: 'POST',  // 👈 Changed from PUT to POST
             headers: {
                 'Content-Type': 'application/json'

@@ -5,7 +5,7 @@ if (!localStorage.getItem("token") || !localStorage.getItem("username")) {
 
 
 // Base URL for your server
-const base_address = "https://www.api.storeway.xyz/";
+const base_address = "http://127.0.0.1:8000/site/";
 const alert = document.getElementById("error_msg");
 alert.style.display = "none"
 let main_category_msg = document.getElementById("main_category_mag");
@@ -119,6 +119,7 @@ document.addEventListener("DOMContentLoaded", function () {
             "input[placeholder='Your store tagline']"
         ).value;
         const storeURL = form.querySelector("input[type='url']").value;
+        const ordersURL = form.querySelector("#orders_url").value;
         const logo = form.querySelector("input[type='file']").files[0]; // File object
         const phone = form.querySelector("input[type='number']").value;
 
@@ -147,6 +148,7 @@ document.addEventListener("DOMContentLoaded", function () {
         formData.append("company_address", companyAddress);
         formData.append("store_tagline", tagline);
         formData.append("website_url", storeURL);
+        formData.append("orders_url", ordersURL);
         formData.append("store_logo_image", logo);
         formData.append("store_phone_number", phone);
         subCategories.forEach(id => formData.append("category", id));//append category

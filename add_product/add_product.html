@@ -22,7 +22,7 @@
         <div class="navbar_custom">
             <div class="logo" onclick="location.href='../dashboard/dashboard.html'">
                 <img src="../websitemedia/storeway_logo_svg.svg" alt="logo">
-                <h1>Storeway</h1>
+                <h1 style="margin-top: 7px;">Storeway</h1>
             </div>
             <div class="nav-items">
                 <input type="checkbox" id="menu-toggle" class="menu-toggle">
@@ -64,11 +64,11 @@
             </div>
             <div class="mb-3">
                 <label class="form-label">Product URL<span class="text-danger">*</span>:</label>
-                <input type="url" class="form-control" placeholder="URL to product page" required>
+                <input id="purl" type="url" class="form-control" placeholder="URL to product page" required>
             </div>
             <div class="mb-3">
                 <label class="form-label">Product Image<span class="text-danger">*</span>:</label>
-                <input type="file" accept="image/*" class="form-control" required>
+                <input id="pimg" type="url" class="form-control" placeholder="URL of product image" required>
             </div>
             <div class="mb-3">
                 <label class="form-label">Categories<span class="text-danger">*</span>:</label>
@@ -92,6 +92,10 @@
                 <div class="mb-3">
                     <label class="form-label">Product Price<span class="text-danger">*</span>:</label>
                     <input type="number" class="form-control" placeholder="Enter price" min="0" required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Product Discount Percentage:</label>
+                    <input type="number" id="discount_percent" class="form-control" placeholder="Enter Discount (if applicable)" max="100">
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Product Description<span class="text-danger">*</span>:</label>

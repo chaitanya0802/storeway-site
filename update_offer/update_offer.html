@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Offer</title>
+    <title>Update Offer</title>
     <link rel="stylesheet" href="../styles.css">
     <link rel="stylesheet" href="../add_product/add_product.css">
     <link rel="stylesheet" href="./update_offers.css">
@@ -18,7 +18,7 @@
         <div class="navbar">
             <div class="logo" onclick="location.href='../dashboard/dashboard.html'">
                 <img src="../websitemedia/storeway_logo_svg.svg" alt="logo">
-                <h1>Storeway</h1>
+                <h1 style="margin-top: 7px;">Storeway</h1>
             </div>
             <div class="nav-items">
                 <input type="checkbox" id="menu-toggle" class="menu-toggle">
@@ -60,11 +60,11 @@
             </div>
             <div class="mb-3">
                 <label class="form-label">Offer URL<span class="text-danger">*</span>:</label>
-                <input type="url" class="form-control" placeholder="URL to offer page" required>
+                <input id="ourl" type="url" class="form-control" placeholder="URL to offer page" required>
             </div>
             <div class="mb-3">
                 <label class="form-label">Offer Image<span class="text-danger">*</span>:</label>
-                <input type="file" accept="image/*" class="form-control">
+                <input id="oimg" type="url" class="form-control" placeholder="URL of offer image" required>
             </div>
             <div class="mb-3">
                 <label class="form-label">Offer Description<span class="text-danger">*</span>:</label>
@@ -72,14 +72,14 @@
                     minlength="5"></textarea>
             </div>
             <div class="mb-3">
-                <label class="form-label">Offer Start Time<span class="text-danger">*</span>:</label>
-                <input type="datetime-local" class="form-control" required>
+                <label class="form-label">Offer Start Time:</label>
+                <input type="datetime-local" class="form-control" >
             </div>
             <div class="mb-3">
                 <p id="offer_time_error" class="text-danger"></p>
 
-                <label class="form-label">Offer End Time<span class="text-danger">*</span>:</label>
-                <input type="datetime-local" class="form-control" required>
+                <label class="form-label">Offer End Time:</label>
+                <input type="datetime-local" class="form-control" >
             </div>
             <br>
             <div class="buttons">

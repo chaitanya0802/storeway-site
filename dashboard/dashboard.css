@@ -9,7 +9,7 @@
 .box_info{
     /* background-color: rgb(255, 255, 255); */
     /* border:1px solid rgb(184, 184, 184); */
-    border-radius: 10px;
+    border-radius: 80px;
     border: none; 
     /* background-color: rgb(242, 230, 253) */
 
@@ -42,7 +42,7 @@
     font-weight: 500;
 }
 .store_url{
-    color:black;
+    color:#4a259a;
     text-decoration: none;
 }
 .btn-outline{
@@ -66,8 +66,8 @@
     border: 1px solid #6C47FF;
     background: transparent;
     color: #6C47FF;
-    padding: 6px 16px;
-    border-radius: 20px;
+    padding: 10px 80px;
+    border-radius: 25px;
     margin: 0 5px;
   }
   .table-container_div {

@@ -19,7 +19,7 @@
         <div class="navbar_custom">
             <div class="logo"  onclick="location.href='dashboard.html'">
                 <img src="../websitemedia/storeway_logo_svg.svg" alt="logo" />
-                <h1>Storeway</h1>
+                <h1 style="margin-top: 7px;">Storeway</h1>
             </div>
             <div class="nav-items">
                 <input type="checkbox" id="menu-toggle" class="menu-toggle" />
@@ -67,11 +67,11 @@
                     <!-- company name -->
                     <div class="box_info w-100  m-3  " style="  background-color: rgb(242, 230, 253)">
                         <div class="row p-4 d-flex justify-content-center align-items-center">
-                            <div class="col-5">
+                            <div class="col-5 col-md-3 d-flex justify-content-center">
                                 <img id="shop_logo" src="../websitemedia/bg1.png" class="img-fluid rounded-circle"
                                     style="width: 100px; height: 100px; object-fit: cover" alt="Circular Image" />
                             </div>
-                            <div class="col-7">
+                            <div class="col-9">
                                 <h3 id="shop_name">Shop Name</h3>
                                 <p id="tab_line">Tag Line</p>
                                 <a class="store_url" id="shop_url" href="#">Store URL</a>
@@ -108,7 +108,7 @@
                 </div>
             </div>
         </div>
-        <div class="container mt-1 mb-3 d-flex justify-content-center">
+        <div class="container mt-4 mb-3 d-flex justify-content-center">
             <!-- Tabs -->
             <div class="d-flex justify-content-center ">
                 <button class=" tab-btn active" id="products-tab">Products</button>
@@ -127,7 +127,7 @@
                 <table id="product-table" class="table table-light table-striped  align-middle">
                     <thead class="table-light">
                         <tr>
-                            <th>id</th>
+                            <th>Id</th>
                             <th>Product Name</th>
                             <th>URL</th>
                             <th>Image</th>
@@ -137,7 +137,6 @@
                             <th>Rating</th>
                             <th>Edit</th>
                             <th>Delete</th>
-                            <th>View</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -153,14 +152,13 @@
                           <th>Id</th>
                           <th>Offer Name</th>
                           <th>URL</th>
-                          <th>Categories</th>
                           <th>Image</th>
+                          <th>Categories</th>
                           <th>Description</th>
                           <th>Start Date</th>
                           <th>End Date</th>
                           <th>Update</th>
                           <th>Delete</th>
-                          <th>View</th>
                         </tr>
                       </thead>
                       <tbody>

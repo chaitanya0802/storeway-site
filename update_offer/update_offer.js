@@ -1,5 +1,5 @@
 // Base URL for your server
-const base_address = "https://www.api.storeway.xyz/";
+const base_address = "http://127.0.0.1:8000/site/";
 //check is token present or not 
 if (!localStorage.getItem("token") || !localStorage.getItem("username")) {
   window.location.href = "../login_sign_up/login.html";
@@ -74,6 +74,7 @@ function populateForm(offer) {
   document.querySelector('input[placeholder="Leave blank for auto ID"]').value = offer.offer_id || '';
   document.querySelector('input[ placeholder="OfferName"]').value = offer.offer_name || '';
   document.querySelector('input[ placeholder="URL to offer page"]').value = offer.offer_url || '';
+  document.querySelector('input[ placeholder="URL of offer image"]').value = offer.offer_image || '';
   form.querySelector("textarea").value = offer.offer_description;
   //start date
 
@@ -117,8 +118,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const offerName = form.querySelector(
       "input[placeholder='OfferName']"
     ).value;
-    const offerURL = form.querySelector("input[type='url']").value;
-    const offerImage = form.querySelector("input[type='file']").files[0];
+    const offerURL = form.querySelector("input[id='ourl']").value;
+    const offerImage = form.querySelector("input[id='oimg']").value;
     const offerDescription = form.querySelector("textarea").value;
     const offerStart = form.querySelector("input[type='datetime-local']").value;
     const offerEnd = form.querySelectorAll("input[type='datetime-local']")[1]
@@ -130,9 +131,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (offerId) formData.append("offer_id", offerId);
     formData.append("offer_name", offerName);
     formData.append("offer_url", offerURL);
-    if (offerImage) {
-      formData.append("offer_image", offerImage);
-    }
+    formData.append("offer_image", offerImage);
     formData.append("offer_description", offerDescription);
     formData.append("start_time", offerStart);
     formData.append("end_time", offerEnd);

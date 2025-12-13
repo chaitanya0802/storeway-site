@@ -1,5 +1,5 @@
 // Get base address
-const base_address = "https://www.api.storeway.xyz/";
+const base_address = "http://127.0.0.1:8000/site/";
 
 //check is token present or not 
 if (!localStorage.getItem("token") || !localStorage.getItem("username")) {
@@ -60,13 +60,18 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function populateForm(product) {
+
     document.querySelector('input[placeholder="Leave blank for auto ID"]').value = product.product_id || '';
     document.querySelector('input[placeholder="ProductName"]').value = product.product_name || '';
     document.querySelector('input[placeholder="URL to product page"]').value = product.product_url || '';
+    document.querySelector('input[placeholder="URL of product image"]').value = product.product_image || '';
     document.querySelector('input[placeholder="Enter price"]').value = product.price || '';
+    document.querySelector("#discount_percent").value = product.discount_percent;
     document.querySelector('textarea[placeholder="Enter description"]').value = product.product_description || '';
     document.getElementById("product_rating").value = product.product_rating || '';
     // Additional logic for setting category, sub-category, and image if needed
+
+    console.log("Form populated with product data:", product);
 }
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -86,8 +91,9 @@ document.addEventListener("DOMContentLoaded", function () {
         // Get Form Values
         const productName = form.querySelector("input[placeholder='ProductName']").value;
         const productURL = form.querySelector("input[type='url']").value;
-        const productImage = form.querySelector("input[type='file']").files[0];
+        const productImage = form.querySelector("#product_image").value;
         const productPrice = form.querySelector("input[placeholder='Enter price']").value;
+        const productDiscount = form.querySelector("#discount_percent")?.value || 0;
         const productDescription = form.querySelector("textarea").value;
         const productRating = form.querySelector("#product_rating")?.value || 0;
 
@@ -102,6 +108,7 @@ document.addEventListener("DOMContentLoaded", function () {
             formData.append("product_image", productImage);
         }
         formData.append("price", productPrice);
+        formData.append("discount_percent", productDiscount);
         formData.append("product_description", productDescription);
         formData.append("product_rating", productRating);
 

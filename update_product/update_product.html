@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add products</title>
+    <title>Update product</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../styles.css">
@@ -22,7 +22,7 @@
         <div class="navbar_custom">
             <div class="logo" onclick="location.href='../dashboard/dashboard.html'">
                 <img src="../websitemedia/storeway_logo_svg.svg" alt="logo">
-                <h1>Storeway</h1>
+                <h1 style="margin-top: 7px;">Storeway</h1>
             </div>
             <div class="nav-items">
                 <input type="checkbox" id="menu-toggle" class="menu-toggle">
@@ -68,11 +68,15 @@
             </div>
             <div class="mb-3">
                 <label class="form-label">Product Image<span class="text-danger">*</span>:</label>
-                <input type="file" accept="image/*" class="form-control">
+                <input type="url" id="product_image" class="form-control" placeholder="URL of product image" required>
             </div>
             <div class="mb-3">
                 <label class="form-label">Product Price<span class="text-danger">*</span>:</label>
                 <input type="number" class="form-control" placeholder="Enter price" min="0" required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Product Discount Percentage:</label>
+                <input type="number" id="discount_percent" class="form-control" placeholder="Enter Discount (if applicable)" max="100">
             </div>
             <div class="mb-3">
                 <label class="form-label">Product Description<span class="text-danger">*</span>:</label>

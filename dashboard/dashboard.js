@@ -1,3 +1,5 @@
+//change url here to https://www.api.storeway.xyz/site/ for deployment
+
 //check user login or not 
 document.getElementById("user_name").innerHTML=localStorage.getItem("username");
 document.getElementById("logout").addEventListener("click", logout); // ✅ Pass the function reference
@@ -24,7 +26,7 @@ function fetchStoreProfile() {
      window.location.href = "../login_sign_up/login.html";
     }
 
-    fetch("https://www.api.storeway.xyz/get-store-profile", {
+    fetch("http://127.0.0.1:8000/site/get-store-profile", {
         method: "GET",
         headers: {
             Authorization: `Token ${localStorage.getItem("token")}`
@@ -49,13 +51,13 @@ function fetchStoreProfile() {
                 data-bs-html="true"
                 data-bs-custom-class="custom-tooltip"
                 data-bs-title="<em>${data.store_name}</em>">
-                ${truncateText(data.store_name, 13)}
+                ${truncateText(data.store_name, 20)}
           </span>` 
             document.getElementById("tab_line").innerHTML = `<span data-bs-toggle="tooltip"
                 data-bs-html="true"
                 data-bs-custom-class="custom-tooltip"
                 data-bs-title="<em>${data.store_tagline}</em>">
-                ${truncateText(data.store_tagline, 20)}
+                ${truncateText(data.store_tagline, 40)}
           </span>` ;
             const storeUrlEl = document.getElementById("shop_url");
             storeUrlEl.href = data.website_url;
@@ -63,7 +65,7 @@ function fetchStoreProfile() {
                 data-bs-html="true"
                 data-bs-custom-class="custom-tooltip"
                 data-bs-title="<em>${data.website_url}</em>">
-                ${truncateText(data.website_url, 20)}
+                ${truncateText(data.website_url, 40)}
           </span>` ;;
             document.getElementById("shop_logo").src = data.store_logo_image;
 
@@ -129,7 +131,7 @@ function fetchProducts(page) {
     if (!localStorage.getItem("token") || !localStorage.getItem("username")) {
      window.location.href = "../login_sign_up/login.html";
     }
-    fetch(`https://www.api.storeway.xyz/get-products?page=${page}&page_size=${pageSize}`, {
+    fetch(`http://127.0.0.1:8000/site/get-products?page=${page}&page_size=${pageSize}`, {
         method: "GET",
         headers: {
             "Authorization": `Token ${localStorage.getItem("token")}`,
@@ -227,19 +229,18 @@ function populateTable(products) {
         </td>
         <td>₹${product.price}</td>
         <td>
-          <span data-bs-toggle="tooltip" 
+            <span data-bs-toggle="tooltip" 
                 data-bs-html="true" 
                 data-bs-custom-class="custom-tooltip"
-                data-bs-title="<em>${product.product_description}</em>">
+                data-bs-title="<em>${escapeHtmlAttribute(product.product_description)}</em>">
                 ${truncateText(product.product_description)}
-          </span>
+            </span>
         </td>
         <td>${product.product_rating}</td>
         <td>
             <a href="../update_product/update_product.html?id=${product.product_id}" class="btn btn-sm btn-outline-primary">Edit</a>
         </td>
         <td><button class="btn btn-sm btn-outline-danger"  onclick="deleteProduct('${product.product_id}')">Delete</button></td>
-        <td><button class="btn btn-sm btn-outline-secondary">View</button></td>
       `;
         const productId = product.product_id;
         const updateProductUrl = new URL("/update_product/update_product.html", window.location.origin);
@@ -247,6 +248,13 @@ function populateTable(products) {
         tableBody.appendChild(row);
     });
 }
+
+function escapeHtmlAttribute(text) {
+  if (!text) return "";
+  return text.replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+}
+
+
 function toggleButtons() {
     prevBtnProduct.disabled = currentPage === 1;
     nextBtnProduct.disabled = currentPage === totalPages;
@@ -287,7 +295,7 @@ function fetchOffers(page) {
     if (!localStorage.getItem("token") || !localStorage.getItem("username")) {
      window.location.href = "../login_sign_up/login.html";
     }
-    fetch(`https://www.api.storeway.xyz/get-offers?page=${page}&page_size=${offerPageSize}`, {
+    fetch(`http://127.0.0.1:8000/site/get-offers?page=${page}&page_size=${offerPageSize}`, {
         method: "GET",
         headers: {
             "Authorization": `Token ${localStorage.getItem("token")}`,
@@ -323,6 +331,7 @@ function fetchOffers(page) {
 }
 
 function populateOfferTable(offers) {
+    console.log(offers);
     //check user login or not 
     if (!localStorage.getItem("token") || !localStorage.getItem("username")) {
      window.location.href = "../login_sign_up/login.html";
@@ -356,7 +365,9 @@ function populateOfferTable(offers) {
                    ${truncateText(offer.offer_url)}
                 </a>
             </td>
-           
+           <td>
+                <img src="${offer.offer_image}" alt="Offer" width="120" style="border-radius: 4px;">
+            </td>
             <td>
                 <span data-bs-toggle="tooltip"
                       data-bs-html="true"
@@ -364,9 +375,6 @@ function populateOfferTable(offers) {
                       data-bs-title="<em>${offer.categories.join(", ")}</em>">
                       ${truncateText(offer.categories.join(", "))}
                 </span>
-            </td>
-             <td>
-                <img src="${offer.offer_image}" alt="Offer" width="50" style="border-radius: 4px;">
             </td>
             <td>
                 <span data-bs-toggle="tooltip" 
@@ -394,9 +402,7 @@ function populateOfferTable(offers) {
             <a href="../update_offer/update_offer.html?id=${offer.offer_id}" class="btn btn-sm btn-outline-primary">Edit</a>
         </td>
             <td><button class="btn btn-sm btn-outline-danger"onclick="deleteOffer('${offer.offer_id}')">Delete</button></td>
-            <td>
-                <a href="${offer.offer_url}" target="_blank" class="btn btn-sm btn-outline-secondary">View</a>
-            </td>
+            
         `;
 
         offerTableBody.appendChild(row);
@@ -443,7 +449,7 @@ function deleteProduct(productId) {
      window.location.href = "../login_sign_up/login.html";
     }
     console.log(productId)
-    fetch(`https://www.api.storeway.xyz/delete-product/${productId}`, {
+    fetch(`http://127.0.0.1:8000/site/delete-product/${productId}`, {
         method: "DELETE",
         headers: {
             "Authorization": `Token ${localStorage.getItem("token")}`
@@ -474,7 +480,7 @@ function deleteOffer(offerId) {
      window.location.href = "../login_sign_up/login.html";
     }
     console.log(offerId)
-    fetch(`https://www.api.storeway.xyz/delete-offer/${offerId}`, {
+    fetch(`http://127.0.0.1:8000/site/delete-offer/${offerId}`, {
         method: "DELETE",
         headers: {
             "Authorization": `Token ${localStorage.getItem("token")}`
